@@ -1,0 +1,26 @@
+{
+  "name": "noteszipper",
+  "version": "1.0.0",
+  "description": "This simple mern stack where you can create notes",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hacetheworld/notes-zipper.git"
+  },
+  "author": "Ajay Meena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hacetheworld/notes-zipper/issues"
+  },
+  "homepage": "https://github.com/hacetheworld/notes-zipper#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
