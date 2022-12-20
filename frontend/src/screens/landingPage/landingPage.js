@@ -13,12 +13,12 @@ export default function LandingPage() {
           <p className='subtitle'>One safe place for all your note.</p>
         </div>
         <div className="buttonContainer">
-              <a to="/login">
+              <a  href="#">
                 <Button size="lg" className="landingbutton">
                   Login
                 </Button>
               </a>
-              <a to="/register">
+              <a  href='#'>
                 <Button
                   variant="outline-primary"
                   size="lg"

@@ -1,11 +1,14 @@
 import React from 'react'
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
     <Container>
 
-      <Navbar.Brand href="/">Note Zipper</Navbar.Brand>
+      <Navbar.Brand>
+        <Link to='/'>Note Zipper</Link>
+      </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -20,7 +23,9 @@ export default function Header() {
         </Nav>
         <Nav>
             <>
-              <Nav.Link href="/mynotes">My Notes</Nav.Link>
+              <Nav.Link href='/mynotes'>
+                <Link to='/mynotes'>My Notes</Link>
+                </Nav.Link>
               <NavDropdown
                 title="user"
                 id="collasible-nav-dropdown"
