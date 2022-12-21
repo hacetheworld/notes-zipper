@@ -1,20 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Accordion, Badge, Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Mainscreen from '../../components/Mainscreen'
 import ReactMarkdown from "react-markdown";
-import notes from "../../data.js"
-
+// import notes from "../../data.js"
+import axios from 'axios'
  const MyNotes=() =>{
+  const [notes,setNotes]=useState([])
   const deleteHandler=(id)=>{
     if (window.confirm("Are You Sure ?")){
       console.log('Deleted');
     }
-
   }
+  const fetchNotes=async()=>{
+    const {data}=await axios.get('/api/notes/')
+    setNotes(data)
+  }
+  useEffect(()=>{
+    fetchNotes()
+  },[])
+
+
   return (
     <Mainscreen title={`Welcome Back ajay meena ..`}>
-      {console.log(notes)}
       <Link to="/createnote">
         <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
           Create new Note
@@ -28,7 +36,7 @@ import notes from "../../data.js"
       {loadingDelete && <Loading />} */}
       {
         notes.map((note) => (
-            <Accordion>
+            <Accordion key={note._id}>
               <Card style={{ margin: 10 }} key={note._id}>
                 <Card.Header style={{ display: "flex" }}>
                   <span

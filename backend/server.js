@@ -16,7 +16,7 @@ app.get('/api/items/:id', (req, res) => {
 });
 
 // READ All Of Them
-app.get('/api/items/', (req, res) => {
+app.get('/api/notes/', (req, res) => {
   // retrieve the items from the database
   res.json(notes);
 });
