@@ -1,17 +1,17 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { register } from "../../actions/userAction";
 import ErrorMessage from "../../components/error";
 import Loading from "../../components/loading";
 import Mainscreen from "../../components/Mainscreen";
 import "./RegisterScreen.css";
 
-function RegisterScreen({ history }) {
+function RegisterScreen() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
   const [pic, setPic] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
@@ -20,38 +20,32 @@ function RegisterScreen({ history }) {
   const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
 
+  const dispatch=useDispatch()
+  const userRegister = useSelector((state)=>state.userRegister)
+  const {loading,error,userInfo} = userRegister
+    const history=useHistory()
+useEffect(()=>{
+  if (userInfo){
+    history.push('/mynotes')
+  }
+},[history,userInfo])
+
+
   const submitHandler = async(e) => {
     e.preventDefault();
     if (password!==confirmpassword){
-        setError("password does not match")
+        setMessage("password does not match")
 
     }else{
-        setError(null)
-        try {
-            const config={
-                headers:{
-                    'Content-Type': 'application/json'
-                  }
-            }
-            setError(false)
-            setLoading(true)
-            const {data}=await Axios.post("/api/user",{name,email,password,pic},config)
-            localStorage.setItem('userInfo',JSON.stringify(data))
-            console.log(data,"from register form submit handler");
-            setLoading(false)
-        } catch (error) {
-            setError(error.response.data.message)
-            setLoading(false)
-        }
-
-
+       dispatch(register(name, email, password, pic))
     }
   };
 
   return (
     <Mainscreen title="REGISTER">
       <div className="loginContainer">
-        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+      {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+      {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">

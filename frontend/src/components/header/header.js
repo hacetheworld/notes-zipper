@@ -1,8 +1,15 @@
 import React from 'react'
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import { logout } from '../../actions/userAction'
 export default function Header() {
   const history=useHistory()
+  const dispatch=useDispatch();
+  const logoutHandler=()=>{
+    dispatch(logout())
+    history.push('/mynotes')
+  }
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
     <Container>
@@ -43,10 +50,7 @@ export default function Header() {
                 </NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={()=>{
-                  localStorage.removeItem('userInfo')
-                  history.push('/mynotes')
-                  }}>
+                <NavDropdown.Item onClick={logoutHandler}>
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>

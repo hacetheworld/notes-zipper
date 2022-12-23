@@ -8,39 +8,25 @@ import ErrorMessage from '../../components/error';
 import Loading from '../../components/loading';
 import Mainscreen from '../../components/Mainscreen';
 import './loginpage.css'
+import {useDispatch, useSelector} from 'react-redux'
+import { login } from '../../actions/userAction';
  const Loginpage=()=> {
   const history=useHistory()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
+  const dispatch=useDispatch();
+  const userLogin=useSelector((state)=>state.userLogin)
+  const {loading,error,userInfo} =userLogin
   useEffect(()=>{
     const userInfo=localStorage.getItem('userInfo')
     if (userInfo){
         history.push('/mynotes')
     }
-  },[history])
+  },[history,userInfo])
   const handleSubmit=async(event)=> {
     event.preventDefault();
-    try {
-        const config={
-            headers:{
-                'Content-Type': 'application/json'
-              }
-        }
-        setError(false)
-        setLoading(true)
-        const {data}=await axios.post("/api/user/login",{email,password},config)
-        localStorage.setItem('userInfo',JSON.stringify(data))
-        console.log(data,"sdsf");
-        setLoading(false)
-        history.push('/mynotes')
+    dispatch(login(email,password))
 
-    } catch (error) {
-        setError(error.response.data.message)
-        setLoading(false)
-    }
   }
 
   function handleEmailChange(event) {
