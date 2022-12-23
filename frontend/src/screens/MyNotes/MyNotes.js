@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Accordion, Badge, Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Mainscreen from '../../components/Mainscreen'
 import ReactMarkdown from "react-markdown";
 // import notes from "../../data.js"
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import axios from 'axios'
+import Loading from '../../components/loading.js'
+import { listNotes } from '../../actions/notesAction';
  const MyNotes=() =>{
-  const [notes,setNotes]=useState([])
-
+  const dispatch=useDispatch()
+  const history=useHistory()
+  const noteList = useSelector((state) => state.noteList);
+  const { loading, error, notes } = noteList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -17,23 +21,15 @@ import axios from 'axios'
       console.log('Deleted');
     }
   }
-  const fetchNotes=async()=>{
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo ? userInfo.token : 'None' }`,
-      }
-    }
-    const {data}=await axios.get('/api/notes/',config)
-    setNotes(data)
-  }
   useEffect(()=>{
-    fetchNotes()
-  },[])
-
-
+    dispatch(listNotes())
+    if (!userInfo){
+      history.push('/login')
+    }
+  },[dispatch])
   return (
-    <Mainscreen title={`Welcome Back ajay meena ..`}>
+    <Mainscreen title={`Welcome Back ${ userInfo.name} ..`}>
       <Link to="/createnote">
         <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
           Create new Note
@@ -45,8 +41,10 @@ import axios from 'axios'
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />} */}
+    {loading && <Loading />}
+
       {
-        notes.map((note) => (
+        notes ? notes.map((note) => (
             <Accordion key={note._id}>
               <Card style={{ margin: 10 }} key={note._id}>
                 <Card.Header style={{ display: "flex" }}>
@@ -94,7 +92,7 @@ import axios from 'axios'
                       <footer className="blockquote-footer">
                         Created on{" "}
                         <cite title="Source Title">
-                          created at -
+                          {note.createdAt.substring(0,10)}
                         </cite>
                       </footer>
                     </blockquote>
@@ -102,7 +100,7 @@ import axios from 'axios'
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-          ))}
+          )) : null}
     </Mainscreen>
   )
 }
