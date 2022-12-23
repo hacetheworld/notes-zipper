@@ -4,16 +4,27 @@ import { Link } from 'react-router-dom'
 import Mainscreen from '../../components/Mainscreen'
 import ReactMarkdown from "react-markdown";
 // import notes from "../../data.js"
+import {useSelector} from 'react-redux'
 import axios from 'axios'
  const MyNotes=() =>{
   const [notes,setNotes]=useState([])
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const deleteHandler=(id)=>{
     if (window.confirm("Are You Sure ?")){
       console.log('Deleted');
     }
   }
   const fetchNotes=async()=>{
-    const {data}=await axios.get('/api/notes/')
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo ? userInfo.token : 'None' }`,
+      }
+    }
+    const {data}=await axios.get('/api/notes/',config)
     setNotes(data)
   }
   useEffect(()=>{
