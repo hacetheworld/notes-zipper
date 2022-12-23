@@ -12,12 +12,13 @@ connectDB()
 app.use(bodyParser.json());
 
 app.use('/api/user',userRoutes)
+
+app.use('/api/notes',(req,res)=>{
+    // find all the documents in the collection
+      res.json(notes);
+})
 app.use(notFound);
 app.use(errorHandler);
-
-
-
-
 
 const port = process.env.PORT || 6000
 app.listen(port, () => {

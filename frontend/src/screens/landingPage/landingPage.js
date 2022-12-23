@@ -3,6 +3,12 @@ import { Button, Container, Row,Link } from 'react-bootstrap'
 import './landing.page.css'
 
 export default function LandingPage() {
+  // useEffect(()=>{
+  //   const userInfo=localStorage.getItem('userInfo')
+  //   if (userInfo){
+  //       history.push('/mynotes')
+  //   }
+  // },[history])
   return (
     <div className="main">
       <Container>
@@ -13,12 +19,12 @@ export default function LandingPage() {
           <p className='subtitle'>One safe place for all your note.</p>
         </div>
         <div className="buttonContainer">
-              <a  href="#">
+              <a  href="/login">
                 <Button size="lg" className="landingbutton">
                   Login
                 </Button>
               </a>
-              <a  href='#'>
+              <a  href='/register'>
                 <Button
                   variant="outline-primary"
                   size="lg"

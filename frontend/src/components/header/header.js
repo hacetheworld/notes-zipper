@@ -1,7 +1,8 @@
 import React from 'react'
 import { Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 export default function Header() {
+  const history=useHistory()
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
     <Container>
@@ -42,7 +43,10 @@ export default function Header() {
                 </NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
+                <NavDropdown.Item onClick={()=>{
+                  localStorage.removeItem('userInfo')
+                  history.push('/mynotes')
+                  }}>
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
