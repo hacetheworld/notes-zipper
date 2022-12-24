@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import {useDispatch, useSelector} from 'react-redux'
 import axios from 'axios'
 import Loading from '../../components/loading.js'
-import { listNotes } from '../../actions/notesAction';
+import { deleteNoteAction, listNotes } from '../../actions/notesAction';
  const MyNotes=() =>{
   const dispatch=useDispatch()
   const history=useHistory()
@@ -15,10 +15,15 @@ import { listNotes } from '../../actions/notesAction';
   const { loading, error, notes } = noteList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const noteUpdate = useSelector((state) => state.noteUpdate);
+  const noteDelete = useSelector((state) => state.noteDelete);
+  const {success:successUpdate}=noteUpdate
+  const {success:successDelete}=noteDelete
 
   const deleteHandler=(id)=>{
     if (window.confirm("Are You Sure ?")){
-      console.log('Deleted');
+      dispatch(deleteNoteAction(id));
+      history.push('/mynotes')
     }
   }
 
@@ -27,7 +32,7 @@ import { listNotes } from '../../actions/notesAction';
     if (!userInfo){
       history.push('/login')
     }
-  },[dispatch])
+  },[dispatch,history,successUpdate,successDelete])
   return (
     <Mainscreen title={`Welcome Back ${ userInfo.name} ..`}>
       <Link to="/createnote">
