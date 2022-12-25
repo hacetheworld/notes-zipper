@@ -16,7 +16,8 @@ You can register a new account or login with an existing one.
 =======
 
 ![] (https://github.com/hacetheworld/notes-zipper/blob/main/live-image-of-app\Screenshot(148).png)
->>>>>>> 93978f646bbf20632a46d9038ae2544bb3c8fc44
+
+> > > > > > > 93978f646bbf20632a46d9038ae2544bb3c8fc44
 
 ### Edit Profile
 
@@ -32,7 +33,7 @@ You can register a new account or login with an existing one.
 
 ### Edit Note
 
-<img src="./live-image-of-app\Screenshot(152).png" alt="img" />
+<img src="./live-image-of-app/Screenshot(152).png" alt="img" />
 
 ## Built with
 
