@@ -11,23 +11,23 @@ This is the final result :
 ### Login Form
 
 You can register a new account or login with an existing one.
-<img src="./live-image-of-app\Screenshot(148).png" alt="img" />
+<img src="./live-image-of-app/2.png" alt="img" />
 
 ### Edit Profile
 
-<img src="./live-image-of-app\Screenshot(151).png" alt="img" />
+<img src="./live-image-of-app/3.png" alt="img" />
 
 ### Create a Note
 
-<img src="./live-image-of-app\Screenshot(153).png" alt="img" />
+<img src="./live-image-of-app/4.png" alt="img" />
 
 ### All Notes
 
-<img src="./live-image-of-app\Screenshot(150).png" alt="img" />
+<img src="./live-image-of-app/5.png" alt="img" />
 
 ### Edit Note
 
-<img src="./live-image-of-app/Screenshot(152).png" alt="img" />
+<img src="./live-image-of-app/6.png" alt="img" />
 
 ## Built with
 
