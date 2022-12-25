@@ -11,7 +11,12 @@ This is the final result :
 ### Login Form
 
 You can register a new account or login with an existing one.
+<<<<<<< HEAD
 <img src="./live-image-of-app\Screenshot(148).png" alt="img" />
+=======
+
+![] (https://github.com/hacetheworld/notes-zipper/blob/main/live-image-of-app\Screenshot(148).png)
+>>>>>>> 93978f646bbf20632a46d9038ae2544bb3c8fc44
 
 ### Edit Profile
 
