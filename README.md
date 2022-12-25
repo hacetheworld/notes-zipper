@@ -6,29 +6,28 @@ This is the final result :
 
 ### Landing Page
 
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\Screenshot(147).png)
+<img src="./live-image-of-app\Screenshot(147).png" alt="img" />
 
 ### Login Form
 
 You can register a new account or login with an existing one.
-
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\Screenshot(148).png)
+<img src="./live-image-of-app\Screenshot(148).png" alt="img" />
 
 ### Edit Profile
 
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\Screenshot(151).png)
+<img src="./live-image-of-app\Screenshot(151).png" alt="img" />
 
 ### Create a Note
 
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\Screenshot(153).png)
+<img src="./live-image-of-app\Screenshot(153).png" alt="img" />
 
 ### All Notes
 
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\Screenshot(150).png)
+<img src="./live-image-of-app\Screenshot(150).png" alt="img" />
 
 ### Edit Note
 
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\(152).png)
+<img src="./live-image-of-app\Screenshot(152).png" alt="img" />
 
 ## Built with
 
