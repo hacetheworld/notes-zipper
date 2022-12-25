@@ -10,9 +10,8 @@ export default function Header({setSearch}) {
   const { userInfo } = userLogin;
   const logoutHandler=()=>{
     dispatch(logout())
-    history.push('/mynotes')
+    history.push('/login')
   }
-  console.log(userInfo);
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
     <Container>
@@ -42,13 +41,13 @@ export default function Header({setSearch}) {
               <>
                 <Nav.Link href="/mynotes">My Notes</Nav.Link>
                 <NavDropdown
-                  title={`${userInfo.name}`}
+                  title={userInfo?.name}
                   id="collasible-nav-dropdown"
                 >
                   <NavDropdown.Item href="/profile">
                     <img
                       alt=""
-                      src={`${userInfo.pic}`}
+                      src={userInfo?.pic}
                       width="25"
                       height="25"
                       style={{ marginRight: 10 }}

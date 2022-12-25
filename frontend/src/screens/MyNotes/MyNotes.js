@@ -28,7 +28,6 @@ import { deleteNoteAction, listNotes } from '../../actions/notesAction';
       history.push('/mynotes')
     }
   }
-
   useEffect(()=>{
     dispatch(listNotes())
     if (!userInfo){
@@ -36,7 +35,7 @@ import { deleteNoteAction, listNotes } from '../../actions/notesAction';
     }
   },[dispatch,history,successCreate,successUpdate,successDelete])
   return (
-    <Mainscreen title={`Welcome Back ${ userInfo.name} ..`}>
+    <Mainscreen title={`Welcome Back ${ userInfo?.name} ..`}>
       <Link to="/createnote">
         <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
           Create new Note

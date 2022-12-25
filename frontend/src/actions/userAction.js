@@ -85,7 +85,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
         },
       };
 
-      const { data } = await Axios.post("/api/users/profile", user, config);
+      const { data } = await Axios.post("/api/user/profile", user, config);
 
       dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
 
