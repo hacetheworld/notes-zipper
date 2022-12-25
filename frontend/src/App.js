@@ -9,13 +9,15 @@ import Loginpage from './screens/loginpage/Loginpage';
 import RegisterPage from './screens/registerpage/registerPage';
 import CreateNote from './singleNote/CreateNote';
 import SingleNote from './singleNote/singleNote';
+import { useState } from 'react';
 function App() {
+  const [search,setSearch]=useState("")
   return (
     <>
-      <Header/>
+      <Header setSearch={(s)=>setSearch(s)} />
       <main>
       <Switch>
-      <Route exact  path='/mynotes' component={MyNotes} />
+      <Route exact  path='/mynotes' component={()=><MyNotes search={search} />} />
       <Route exact  path='/login' component={Loginpage} />
       <Route exact  path='/register' component={RegisterPage} />
       <Route exact  path='/createnote' component={CreateNote} />

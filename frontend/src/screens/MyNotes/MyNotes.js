@@ -8,17 +8,19 @@ import {useDispatch, useSelector} from 'react-redux'
 import axios from 'axios'
 import Loading from '../../components/loading.js'
 import { deleteNoteAction, listNotes } from '../../actions/notesAction';
- const MyNotes=() =>{
+ const MyNotes=({search}) =>{
   const dispatch=useDispatch()
   const history=useHistory()
   const noteList = useSelector((state) => state.noteList);
   const { loading, error, notes } = noteList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const noteCreate = useSelector((state) => state.noteCreate);
   const noteUpdate = useSelector((state) => state.noteUpdate);
   const noteDelete = useSelector((state) => state.noteDelete);
   const {success:successUpdate}=noteUpdate
   const {success:successDelete}=noteDelete
+  const {success:successCreate}=noteCreate
 
   const deleteHandler=(id)=>{
     if (window.confirm("Are You Sure ?")){
@@ -32,7 +34,7 @@ import { deleteNoteAction, listNotes } from '../../actions/notesAction';
     if (!userInfo){
       history.push('/login')
     }
-  },[dispatch,history,successUpdate,successDelete])
+  },[dispatch,history,successCreate,successUpdate,successDelete])
   return (
     <Mainscreen title={`Welcome Back ${ userInfo.name} ..`}>
       <Link to="/createnote">
@@ -49,7 +51,10 @@ import { deleteNoteAction, listNotes } from '../../actions/notesAction';
     {loading && <Loading />}
 
       {
-        notes ? notes.map((note) => (
+        notes ? notes.filter((filteredNote) =>filteredNote.title.toLowerCase().includes(search.toLowerCase())
+      )
+      .reverse()
+      .map((note) => (
             <Accordion key={note._id}>
               <Card style={{ margin: 10 }} key={note._id}>
                 <Card.Header style={{ display: "flex" }}>
