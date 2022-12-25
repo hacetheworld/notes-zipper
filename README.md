@@ -12,7 +12,7 @@ This is the final result :
 
 You can register a new account or login with an existing one.
 
-![] (https://github.com/hacetheworld/notes-zipper/blob/main/images/live-image-of-app\Screenshot(148).png)
+![] (https://github.com/hacetheworld/notes-zipper/blob/main/live-image-of-app\Screenshot(148).png)
 
 ### Edit Profile
 
